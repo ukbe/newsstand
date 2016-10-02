@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">Featured News</div>
+        <div class="panel-heading">Posted News</div>
         <div class="panel-body">
-            @each('news.subviews.news', $featured_news, 'news', 'news.subviews.nonews')
+            @include('subviews.news_table', ['news' => $news])
         </div>
     </div>
 @endsection
