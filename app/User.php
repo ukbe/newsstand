@@ -31,4 +31,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class);
     }
+
+    public function addNews(News $news)
+    {
+        $news->user_id = $this->id;
+
+        $this->news()->save($news);
+    }
 }

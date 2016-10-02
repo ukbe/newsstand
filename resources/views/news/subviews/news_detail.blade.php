@@ -1,7 +1,6 @@
 <div>
-        <div>
-            <a href="{{ $news->path() }}" class="center">
-            <img src="{{ $news->image }}" alt="{{ $news->title }}" class="img-rounded thumbnail"></a>
+        <div class="center">
+            <img src="{{ $news->imageUrl() }}" alt="{{ $news->title }}" class="img-responsive">
         </div>
         <div class="caption">
             <h1>{{ $news->title }}</h1>

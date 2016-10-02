@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class News extends Model
 {
+    protected $fillable = [
+        'title', 'summary', 'publish', 'content'
+    ];
 
     public function user()
     {
@@ -15,6 +19,11 @@ class News extends Model
     public function path()
     {
         return "/news/{$this->id}";
+    }
+
+    public function imageUrl()
+    {
+        return starts_with($this->image, 'http://') ? $this->image : Storage::url($this->image);
     }
 
 }
