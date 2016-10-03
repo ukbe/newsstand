@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class NewsController extends Controller
 {
@@ -14,7 +16,8 @@ class NewsController extends Controller
         'title' => 'required|min:5',
         'summary' => 'required|min:5',
         'content' => 'required|min:5',
-        'publish' => 'boolean'
+        'publish' => 'boolean',
+        'image' => 'mimes:jpeg,bmp,png|size:2048'
     ];
 
     /**
@@ -117,6 +120,27 @@ class NewsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Export news article as PDF.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function export(Request $request, News $news)
+    {
+        $options = new Options;
+        $options->setIsRemoteEnabled(true);
+        $options->setIsHtml5ParserEnabled(true);
+        $options->setDefaultFont('Helvetica');
+
+        $dompdf = new Dompdf();
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml(view('news.subviews.export', compact('news')));
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream();
     }
 
     protected function storeImage(Request $request, &$news)

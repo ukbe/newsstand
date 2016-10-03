@@ -12,11 +12,12 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('news/posted', 'NewsController@posted')->name('news_posted');
-Route::get('news/post', 'NewsController@post');
-Route::post('news', 'NewsController@store');
+Route::get('news/posted', 'NewsController@posted')->name('news_posted')->middleware('auth');
+Route::get('news/post', 'NewsController@post')->middleware('auth');
+Route::post('news', 'NewsController@store')->middleware('auth');
 Route::get('news/{news}', 'NewsController@show');
-Route::patch('news/{news}', 'NewsController@update');
-Route::get('news/{news}/edit', 'NewsController@edit');
+Route::patch('news/{news}', 'NewsController@update')->middleware('auth');
+Route::get('news/{news}/edit', 'NewsController@edit')->middleware('auth');
+Route::get('news/{news}/export', 'NewsController@export');
 
 Auth::routes();

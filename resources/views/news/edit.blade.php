@@ -7,13 +7,13 @@
         <div class="panel-body">
 
             @if (count($errors))
-                <ul>
-                    @foreach($errors->all() as $error)
-
-                        <li>{{ $error }}</li>
-
-                    @endforeach
-                </ul>
+                <div class="alert alert-warning">
+                    <ul class="list-unstyled">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
 
             <form method="POST" action="/news{{ isset($news) ? "/" . $news->id : '' }}" enctype="multipart/form-data">
@@ -53,7 +53,8 @@
                         <input type="checkbox" id="publish" name="publish" value="1" {{ old('publish') ? ' checked' : '' }}> Publish
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary">Post</button>
+                <button type="submit" class="btn btn-primary">Post</button>&nbsp;&nbsp;
+                <a href="/" class="btn btn-default pull-right">Cancel</a>
 
             </form>
         </div>
