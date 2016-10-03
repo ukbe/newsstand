@@ -30,3 +30,4 @@ Route::get('verify/{token}', 'Auth\RegisterController@verify');
 Route::post('verify/{token}', 'Auth\RegisterController@createPassword');
 
 Auth::routes();
+Route::feeds();

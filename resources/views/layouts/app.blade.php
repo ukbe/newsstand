@@ -19,6 +19,9 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+    <!-- RSS Feeds   -->
+    @include('laravel-feed::feed-links')
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
