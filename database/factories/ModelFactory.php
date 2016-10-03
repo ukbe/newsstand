@@ -26,7 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\News::class, function (Faker\Generator $faker) use ($factory) {
     return [
         'title' => $faker->text(20),
-        'user_id' => 1,
+        'user_id' => $factory->create('App\User')->id,
         'summary' => $faker->paragraph,
         'content' => $faker->paragraph(10),
         'publish' => 1

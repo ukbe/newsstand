@@ -54,7 +54,9 @@ class RegisterController extends Controller
     {
 
         if ($checkPass) {
-            $rules = ['password' => 'required|min:6|confirmed'];
+            $rules = [
+                'password' => 'required|min:6|confirmed'
+            ];
         } else {
             $rules = [
                 'name' => 'required|max:255',
@@ -116,7 +118,6 @@ class RegisterController extends Controller
     public function createPassword(Request $request, $token)
     {
         $user = $this->retrieveUserFromToken($token);
-
         if (!$user) {
             return redirect('/login');
         }

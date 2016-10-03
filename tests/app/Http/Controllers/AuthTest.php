@@ -8,6 +8,8 @@ use App\User;
 
 class AuthTest extends TestCase
 {
+//    use DatabaseTransactions;
+
     /**
      * msg
      *
@@ -69,9 +71,15 @@ class AuthTest extends TestCase
      */
     public function test_user_verify()
     {
-        $user = User::where('email', '=', 'testuser@example.com')->first();
+        $user = factory(App\User::class)->create([
+            'verified' => 0,
+            'verification_token' => 'TESTTOKEN'
+        ]);
 
-        $this->post('/verify/' . $user->verification_token, ['password' => 'password', 'password-confirm' => 'password'])
+        $this->visit('/verify/' . $user->verification_token)
+            ->type('password', 'password')
+            ->type('password', 'password_confirmation')
+            ->press('Create Password')
             ->seeText('You have successfully verified your email address.');
     }
 
