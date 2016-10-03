@@ -1,27 +1,30 @@
-# Laravel PHP Framework
+# Newsstand Application
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Newsstand is a web application that allows users publish news articles. Registeration is public upon email verification.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+This application is developed using **Laravel 5.3.15**
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Installation
 
-## Official Documentation
+Development environment can be build with built in Laravel's **Homestead**.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+```git clone https://github.com/ukbe/newsstand
+git checkout master
+cd newsstand
+composer install
+vagrant up
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+```
 
-## Contributing
+Application should be available at 
+<http://localhost:8000>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Functionality
 
-## Security Vulnerabilities
+Users register with their name and email address. User receives an email address verification message after posting the registration form. User should click the activation link in the message. When clicked user will see a verification page with password fields. At this point user should type and confirm his/her password. After submitting the verification form user is informed that his/her account is activated. User is required to login using with email address and password.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Registered users can post news articles.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Anonymous users can visit homepage which includes latest 10 news articles. By clicking on a new article's image users can view news article in detailed view. In the detailed view user can export the article as pdf by clicking the Export PDF button.
