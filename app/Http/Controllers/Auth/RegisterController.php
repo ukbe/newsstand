@@ -101,7 +101,7 @@ class RegisterController extends Controller
         $user = $this->retrieveUserFromToken($token);
 
         if (!$user) {
-            return redirect('login_path');
+            return redirect('/login');
         }
 
         return view('user.verify', compact('user'));
@@ -118,7 +118,7 @@ class RegisterController extends Controller
         $user = $this->retrieveUserFromToken($token);
 
         if (!$user) {
-            return redirect('login_path');
+            return redirect('/login');
         }
 
         $this->validator($request->all(), true)->validate();

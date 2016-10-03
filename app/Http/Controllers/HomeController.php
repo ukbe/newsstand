@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $featured_news = News::with('user')->where('publish', true)->orderBy('created_at', 'desc')->take(10)->get();
+        $featured_news = News::getFeaturedItems();
 
         return view('home', compact('featured_news'));
     }

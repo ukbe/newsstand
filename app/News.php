@@ -45,7 +45,7 @@ class News extends Model implements FeedItem
      *  Retrieves latest active 10 news articles.
      *
      */
-    public function getFeaturedItems(){
+    public static function getFeaturedItems(){
         return News::with('user')->where('publish', true)->orderBy('created_at', 'desc')->take(10)->get();
     }
 
