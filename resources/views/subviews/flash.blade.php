@@ -5,4 +5,4 @@
             <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
         @endif
     @endforeach
-</div> <!-- end .flash-message -->
+</div>

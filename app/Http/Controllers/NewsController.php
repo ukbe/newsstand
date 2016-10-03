@@ -17,7 +17,7 @@ class NewsController extends Controller
         'summary' => 'required|min:5',
         'content' => 'required|min:5',
         'publish' => 'boolean',
-        'image' => 'mimes:jpeg,bmp,png|size:2048'
+        'max' => 'mimes:jpeg,bmp,png|size:2048'
     ];
 
     /**
@@ -117,9 +117,11 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        $news->delete();
+
+        return redirect()->back();
     }
 
     /**

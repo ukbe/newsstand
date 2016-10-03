@@ -16,8 +16,15 @@ Route::get('news/posted', 'NewsController@posted')->name('news_posted')->middlew
 Route::get('news/post', 'NewsController@post')->middleware('auth');
 Route::post('news', 'NewsController@store')->middleware('auth');
 Route::get('news/{news}', 'NewsController@show');
-Route::patch('news/{news}', 'NewsController@update')->middleware('auth');
-Route::get('news/{news}/edit', 'NewsController@edit')->middleware('auth');
+Route::get('news/{news}/remove', 'NewsController@destroy');
+
+/*
+ * Disabled news article editing functionality.
+ *
+ * Route::patch('news/{news}', 'NewsController@update')->middleware('auth');
+ * Route::get('news/{news}/edit', 'NewsController@edit')->middleware('auth');
+ */
+
 Route::get('news/{news}/export', 'NewsController@export');
 Route::get('verify/{token}', 'Auth\RegisterController@verify');
 Route::post('verify/{token}', 'Auth\RegisterController@createPassword');
