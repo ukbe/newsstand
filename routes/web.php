@@ -19,5 +19,7 @@ Route::get('news/{news}', 'NewsController@show');
 Route::patch('news/{news}', 'NewsController@update')->middleware('auth');
 Route::get('news/{news}/edit', 'NewsController@edit')->middleware('auth');
 Route::get('news/{news}/export', 'NewsController@export');
+Route::get('verify/{token}', 'Auth\RegisterController@verify');
+Route::post('verify/{token}', 'Auth\RegisterController@createPassword');
 
 Auth::routes();

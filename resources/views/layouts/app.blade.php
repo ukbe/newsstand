@@ -77,6 +77,8 @@
         </div>
     </nav>
 
+    @include('/subviews.flash')
+
     @yield('body')
 
     <!-- Scripts -->
