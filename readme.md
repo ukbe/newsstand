@@ -8,9 +8,10 @@ This application is developed using **Laravel 5.3.15**
 
 Development environment can be build with built in Laravel's **Homestead**.
 
-```git clone https://github.com/ukbe/newsstand
-git checkout master
+```
+git clone https://github.com/ukbe/newsstand
 cd newsstand
+git checkout master
 composer install
 vagrant up
 php artisan key:generate
